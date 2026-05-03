@@ -1,0 +1,207 @@
+{
+  "info": {
+    "_postman_id": "cd137f6a-9a86-4345-903c-7e0a10fabaaf",
+    "name": "Trouve ton artisan API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54485452",
+    "_collection_link": "https://go.postman.co/collection/54485452-cd137f6a-9a86-4345-903c-7e0a10fabaaf?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Health - Serveur",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Health - Base de donnees",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health/db",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "health",
+            "db"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Toutes les categories",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/categories",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Categorie par ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/categories/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "categories",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Toutes les specialites",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/specialites",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "specialites"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Tous les artisans",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Artisans du mois",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Artisans par categorie",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Recherche par nom",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Artisan par ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/artisans/3",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "artisans",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Envoyer un message",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"artisanId\": 3,\r\n  \"nom\": \"Mathieu Test Postman\",\r\n  \"email\": \"mathieu.test@exemple.com\",\r\n  \"objet\": \"Test depuis Postman\",\r\n  \"message\": \"Bonjour, ceci est un test d'envoi de message via l'API Postman pour valider le formulaire de contact. Merci.\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/contact",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "contact"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Artisan introuvable (404)",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Contact - validation echouee",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Route inexistante (404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/route-qui-nexiste-pas",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "route-qui-nexiste-pas"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
