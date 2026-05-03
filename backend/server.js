@@ -6,6 +6,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const { sequelize, testConnection } = require('./src/config/database');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -29,6 +30,26 @@ app.get('/api/health', (req, res) => {
 });
 
 // ------------------------------------------------------------
+// Route de test : connexion à la base
+// ------------------------------------------------------------
+app.get('/api/health/db', async (req, res) => {
+  try {
+    await sequelize.authenticate();
+    res.status(200).json({
+      status: 'OK',
+      message: 'Connexion à MySQL active',
+      database: process.env.DB_NAME
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'ERROR',
+      message: 'Connexion à MySQL impossible',
+      error: error.message
+    });
+  }
+});
+
+// ------------------------------------------------------------
 // Gestion 404 (route non trouvée)
 // ------------------------------------------------------------
 app.use((req, res) => {
@@ -39,12 +60,24 @@ app.use((req, res) => {
 });
 
 // ------------------------------------------------------------
-// Démarrage du serveur
+// Démarrage du serveur (avec test connexion DB)
 // ------------------------------------------------------------
-app.listen(PORT, () => {
-  console.log('═══════════════════════════════════════════════');
-  console.log(`✅ Serveur démarré sur http://localhost:${PORT}`);
-  console.log(`📍 Environnement : ${process.env.NODE_ENV || 'development'}`);
-  console.log(`🩺 Health check : http://localhost:${PORT}/api/health`);
-  console.log('═══════════════════════════════════════════════');
-});
+const startServer = async () => {
+  // Test de la connexion à la base avant de lancer le serveur
+  const dbOk = await testConnection();
+
+  if (!dbOk) {
+    console.error('⚠️  Démarrage du serveur malgré l\'échec de connexion DB');
+  }
+
+  app.listen(PORT, () => {
+    console.log('═══════════════════════════════════════════════');
+    console.log(`✅ Serveur démarré sur http://localhost:${PORT}`);
+    console.log(`📍 Environnement : ${process.env.NODE_ENV || 'development'}`);
+    console.log(`🩺 Health check : http://localhost:${PORT}/api/health`);
+    console.log(`🗄️  Health DB    : http://localhost:${PORT}/api/health/db`);
+    console.log('═══════════════════════════════════════════════');
+  });
+};
+
+startServer();
