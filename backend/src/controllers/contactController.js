@@ -1,27 +1,20 @@
 // ============================================================
 // src/controllers/contactController.js
 // Logique métier pour le formulaire de contact
-// ⚠️ Nodemailer (envoi réel d'email) sera ajouté à l'étape 6
 // ============================================================
 
 const { Artisan } = require('../models');
+const { sendContactEmail } = require('../services/emailService');
 
 // ------------------------------------------------------------
 // POST /api/contact
-// Reçoit un message du formulaire de contact et "envoie" un email
+// Envoie un email à un artisan via Nodemailer
 // Body attendu : { artisanId, nom, email, objet, message }
+// (Validation déjà faite par le middleware validators.js)
 // ------------------------------------------------------------
 const sendContact = async (req, res) => {
   try {
     const { artisanId, nom, email, objet, message } = req.body;
-
-    // Validation des champs obligatoires
-    if (!artisanId || !nom || !email || !objet || !message) {
-      return res.status(400).json({
-        status: 'ERROR',
-        message: 'Tous les champs sont obligatoires (artisanId, nom, email, objet, message)'
-      });
-    }
 
     // Vérifier que l'artisan existe
     const artisan = await Artisan.findByPk(artisanId);
@@ -32,14 +25,21 @@ const sendContact = async (req, res) => {
       });
     }
 
-    // TODO étape 6 : envoi réel via Nodemailer
-    console.log('═══════════════════════════════════════════════');
-    console.log('📧 Nouveau message de contact :');
-    console.log(`   À : ${artisan.nom} (${artisan.email})`);
-    console.log(`   De : ${nom} <${email}>`);
-    console.log(`   Objet : ${objet}`);
-    console.log(`   Message : ${message}`);
-    console.log('═══════════════════════════════════════════════');
+    // Envoi de l'email
+    await sendContactEmail({
+      artisan: {
+        nom: artisan.nom,
+        email: artisan.email
+      },
+      expediteur: {
+        nom,
+        email
+      },
+      objet,
+      message
+    });
+
+    console.log(`✉️  Email envoyé à ${artisan.nom} (${artisan.email}) de la part de ${nom} <${email}>`);
 
     res.status(200).json({
       status: 'OK',

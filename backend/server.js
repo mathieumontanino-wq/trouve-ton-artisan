@@ -8,6 +8,7 @@ require('dotenv').config();
 const express = require('express');
 const { sequelize, testConnection } = require('./src/config/database');
 const apiRoutes = require('./src/routes');
+const { verifySmtpConnection } = require('./src/services/emailService');
 
 const {
   helmetMiddleware,
@@ -82,10 +83,16 @@ app.use(errorHandler);
 // Démarrage du serveur
 // ------------------------------------------------------------
 const startServer = async () => {
+  // Test connexion DB
   const dbOk = await testConnection();
-
   if (!dbOk) {
     console.error('⚠️  Démarrage du serveur malgré l\'échec de connexion DB');
+  }
+
+  // Test connexion SMTP
+  const smtpOk = await verifySmtpConnection();
+  if (!smtpOk) {
+    console.error('⚠️  Démarrage du serveur malgré l\'échec de connexion SMTP');
   }
 
   app.listen(PORT, () => {
@@ -93,6 +100,7 @@ const startServer = async () => {
     console.log(`✅ Serveur démarré sur http://localhost:${PORT}`);
     console.log(`📍 Environnement : ${process.env.NODE_ENV || 'development'}`);
     console.log(`🛡️  Sécurité     : helmet + cors + rate-limit`);
+    console.log(`📧 Email SMTP   : ${process.env.SMTP_HOST}`);
     console.log(`🩺 Health check : http://localhost:${PORT}/api/health`);
     console.log(`🗄️  Health DB    : http://localhost:${PORT}/api/health/db`);
     console.log('═══════════════════════════════════════════════');
