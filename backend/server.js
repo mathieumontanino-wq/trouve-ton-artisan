@@ -7,6 +7,7 @@ require('dotenv').config();
 
 const express = require('express');
 const { sequelize, testConnection } = require('./src/config/database');
+const apiRoutes = require('./src/routes');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -48,7 +49,10 @@ app.get('/api/health/db', async (req, res) => {
     });
   }
 });
-
+// ------------------------------------------------------------
+// Routes API
+// ------------------------------------------------------------
+app.use('/api', apiRoutes);
 // ------------------------------------------------------------
 // Gestion 404 (route non trouvée)
 // ------------------------------------------------------------
