@@ -9,14 +9,32 @@ const express = require('express');
 const { sequelize, testConnection } = require('./src/config/database');
 const apiRoutes = require('./src/routes');
 
+const {
+  helmetMiddleware,
+  corsMiddleware,
+  generalLimiter
+} = require('./src/middlewares/security');
+
+const {
+  notFoundHandler,
+  errorHandler
+} = require('./src/middlewares/errorHandler');
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // ------------------------------------------------------------
-// Middlewares natifs
+// Middlewares de sécurité (avant tout le reste)
 // ------------------------------------------------------------
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(helmetMiddleware);
+app.use(corsMiddleware);
+app.use(generalLimiter);
+
+// ------------------------------------------------------------
+// Middlewares natifs avec limite de taille (anti payload bombing)
+// ------------------------------------------------------------
+app.use(express.json({ limit: '10kb' }));
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 // ------------------------------------------------------------
 // Route de test (santé du serveur)
@@ -44,30 +62,26 @@ app.get('/api/health/db', async (req, res) => {
   } catch (error) {
     res.status(500).json({
       status: 'ERROR',
-      message: 'Connexion à MySQL impossible',
-      error: error.message
+      message: 'Connexion à MySQL impossible'
     });
   }
 });
+
 // ------------------------------------------------------------
 // Routes API
 // ------------------------------------------------------------
 app.use('/api', apiRoutes);
-// ------------------------------------------------------------
-// Gestion 404 (route non trouvée)
-// ------------------------------------------------------------
-app.use((req, res) => {
-  res.status(404).json({
-    status: 'ERROR',
-    message: `Route ${req.method} ${req.originalUrl} non trouvée`
-  });
-});
 
 // ------------------------------------------------------------
-// Démarrage du serveur (avec test connexion DB)
+// Gestion des erreurs (à la toute fin)
+// ------------------------------------------------------------
+app.use(notFoundHandler);
+app.use(errorHandler);
+
+// ------------------------------------------------------------
+// Démarrage du serveur
 // ------------------------------------------------------------
 const startServer = async () => {
-  // Test de la connexion à la base avant de lancer le serveur
   const dbOk = await testConnection();
 
   if (!dbOk) {
@@ -78,6 +92,7 @@ const startServer = async () => {
     console.log('═══════════════════════════════════════════════');
     console.log(`✅ Serveur démarré sur http://localhost:${PORT}`);
     console.log(`📍 Environnement : ${process.env.NODE_ENV || 'development'}`);
+    console.log(`🛡️  Sécurité     : helmet + cors + rate-limit`);
     console.log(`🩺 Health check : http://localhost:${PORT}/api/health`);
     console.log(`🗄️  Health DB    : http://localhost:${PORT}/api/health/db`);
     console.log('═══════════════════════════════════════════════');
