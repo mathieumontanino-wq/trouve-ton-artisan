@@ -1,0 +1,40 @@
+// ============================================================
+// main.scss
+// Point d'entrée principal des styles
+// Importé une seule fois dans main.jsx
+// ============================================================
+
+@use 'abstracts' as *;
+
+// ------------------------------------------------------------
+// 1. Bootstrap 5 (avec personnalisation des couleurs)
+// ------------------------------------------------------------
+@use 'bootstrap/scss/bootstrap' with (
+  $primary:                $color-primary,
+  $danger:                 $color-error,
+  $success:                $color-success,
+  $dark:                   $color-text,
+  $light:                  $color-bg-light,
+  $font-family-sans-serif: $font-primary,
+  $border-radius:          $radius-md,
+  $border-radius-lg:       $radius-lg
+);
+
+// ------------------------------------------------------------
+// 2. Polices
+// ------------------------------------------------------------
+@use 'fonts/graphik';
+
+// ------------------------------------------------------------
+// 3. Base (reset, typo globale)
+// ------------------------------------------------------------
+@use 'base/reset';
+@use 'base/typography';
+
+// ------------------------------------------------------------
+// 4. Composants — à venir
+// ------------------------------------------------------------
+
+// ------------------------------------------------------------
+// 5. Pages — à venir
+// ------------------------------------------------------------

@@ -1,0 +1,111 @@
+// ============================================================
+// _variables.scss
+// Design System — Trouve ton artisan
+// ============================================================
+
+// ------------------------------------------------------------
+// 1. COULEURS — Palette imposée par le brief
+// ------------------------------------------------------------
+
+$color-bg-light:    #F1F8FC;
+$color-primary:     #0074C7;
+$color-primary-dark:#00497C;
+$color-text:        #384050;
+$color-error:       #CD2C2E;
+$color-success:     #82B864;
+
+$color-white:       #FFFFFF;
+$color-black:       #000000;
+$color-border:      #D3D1C7;
+$color-gray-light:  #F5F5F5;
+$color-gray-medium: #999999;
+
+// ------------------------------------------------------------
+// 2. TYPOGRAPHIE
+// ------------------------------------------------------------
+
+$font-primary: 'Graphik', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+$font-size-h1-desktop:    48px;
+$font-size-h1-tablet:     40px;
+$font-size-h1-mobile:     28px;
+
+$font-size-h2-desktop:    32px;
+$font-size-h2-tablet:     28px;
+$font-size-h2-mobile:     22px;
+
+$font-size-h3-desktop:    24px;
+$font-size-h3-tablet:     20px;
+$font-size-h3-mobile:     18px;
+
+$font-size-body:          16px;
+$font-size-small:         14px;
+$font-size-button:        16px;
+$font-size-navigation:    16px;
+
+$font-weight-regular: 400;
+$font-weight-medium:  500;
+$font-weight-bold:    700;
+
+$line-height-tight:   1.2;
+$line-height-normal:  1.5;
+$line-height-loose:   1.8;
+
+// ------------------------------------------------------------
+// 3. ESPACEMENTS
+// ------------------------------------------------------------
+
+$space-xs:   4px;
+$space-sm:   8px;
+$space-md:   16px;
+$space-lg:   24px;
+$space-xl:   32px;
+$space-2xl:  48px;
+$space-3xl:  64px;
+$space-4xl:  96px;
+
+// ------------------------------------------------------------
+// 4. BREAKPOINTS
+// ------------------------------------------------------------
+
+$breakpoint-sm:  576px;
+$breakpoint-md:  768px;
+$breakpoint-lg:  992px;
+$breakpoint-xl:  1200px;
+$breakpoint-xxl: 1440px;
+
+// ------------------------------------------------------------
+// 5. RAYONS DE BORDURE
+// ------------------------------------------------------------
+
+$radius-sm:   4px;
+$radius-md:   8px;
+$radius-lg:   12px;
+$radius-xl:   16px;
+$radius-full: 9999px;
+
+// ------------------------------------------------------------
+// 6. OMBRES
+// ------------------------------------------------------------
+
+$shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md:   0 4px 6px rgba(0, 0, 0, 0.10);
+$shadow-card: 0 4px 12px rgba(0, 0, 0, 0.15);
+$shadow-lg:   0 10px 25px rgba(0, 0, 0, 0.15);
+
+// ------------------------------------------------------------
+// 7. TRANSITIONS
+// ------------------------------------------------------------
+
+$transition-fast:   0.15s ease;
+$transition-normal: 0.25s ease;
+$transition-slow:   0.4s ease;
+
+// ------------------------------------------------------------
+// 8. Z-INDEX
+// ------------------------------------------------------------
+
+$z-dropdown:   100;
+$z-header:     200;
+$z-modal:      300;
+$z-tooltip:    400;

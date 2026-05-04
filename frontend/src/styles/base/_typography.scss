@@ -1,0 +1,58 @@
+// ============================================================
+// _typography.scss
+// Styles typographiques de base
+// ============================================================
+
+@use '../abstracts' as *;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $color-primary-dark;
+  margin: 0 0 $space-md 0;
+}
+
+h1 {
+  font-size: $font-size-h1-mobile;
+
+  @include respond-to(md) {
+    font-size: $font-size-h1-tablet;
+  }
+
+  @include respond-to(lg) {
+    font-size: $font-size-h1-desktop;
+  }
+}
+
+h2 {
+  font-size: $font-size-h2-mobile;
+
+  @include respond-to(md) {
+    font-size: $font-size-h2-tablet;
+  }
+
+  @include respond-to(lg) {
+    font-size: $font-size-h2-desktop;
+  }
+}
+
+h3 {
+  font-size: $font-size-h3-mobile;
+
+  @include respond-to(md) {
+    font-size: $font-size-h3-tablet;
+  }
+
+  @include respond-to(lg) {
+    font-size: $font-size-h3-desktop;
+  }
+}
+
+p {
+  margin: 0 0 $space-md 0;
+}
+
+.text-small {
+  font-size: $font-size-small;
+}
