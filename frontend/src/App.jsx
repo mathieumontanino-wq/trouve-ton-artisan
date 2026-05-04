@@ -1,25 +1,42 @@
+import { Routes, Route, Link } from 'react-router-dom';
+
+import Accueil from './pages/Accueil';
+import Categorie from './pages/Categorie';
+import FicheArtisan from './pages/FicheArtisan';
+import NotFound from './pages/NotFound';
+
 function App() {
   return (
-    <div className="container py-5">
-      <h1>Trouve ton artisan</h1>
-      <p className="lead">
-        Plateforme de mise en relation avec les artisans de la région
-        Auvergne-Rhône-Alpes.
-      </p>
+    <>
+      {/* Navigation temporaire de test */}
+      <nav className="bg-light border-bottom py-2 mb-0">
+        <div className="container d-flex gap-3 flex-wrap">
+          <Link to="/" className="btn btn-sm btn-outline-primary">
+            Accueil
+          </Link>
+          <Link to="/categorie/Alimentation" className="btn btn-sm btn-outline-primary">
+            Cat. Alimentation
+          </Link>
+          <Link to="/categorie/Bâtiment" className="btn btn-sm btn-outline-primary">
+            Cat. Bâtiment
+          </Link>
+          <Link to="/artisan/3" className="btn btn-sm btn-outline-primary">
+            Fiche Artisan #3
+          </Link>
+          <Link to="/page-qui-n-existe-pas" className="btn btn-sm btn-outline-danger">
+            Test 404
+          </Link>
+        </div>
+      </nav>
 
-      <div className="d-flex gap-3 mt-4 flex-wrap">
-        <button className="btn btn-primary">Bouton primaire</button>
-        <button className="btn btn-outline-primary">Bouton secondaire</button>
-        <button className="btn btn-success">Succès</button>
-        <button className="btn btn-danger">Erreur</button>
-      </div>
-
-      <div className="alert alert-info mt-4">
-        ✅ Si tu vois cette page stylée avec les bonnes couleurs (#0074C7 pour
-        le bleu, #82B864 pour le vert, #CD2C2E pour le rouge), ton design
-        system fonctionne : Bootstrap 5 + Sass + variables personnalisées.
-      </div>
-    </div>
+      {/* Système de routing */}
+      <Routes>
+        <Route path="/" element={<Accueil />} />
+        <Route path="/categorie/:nom" element={<Categorie />} />
+        <Route path="/artisan/:id" element={<FicheArtisan />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 }
 
