@@ -1,0 +1,123 @@
+// ============================================================
+// _footer.scss
+// Styles du Footer (responsive)
+// ============================================================
+
+@use '../abstracts' as *;
+
+.footer {
+  background-color: $color-primary-dark;
+  color: $color-white;
+  padding: $space-2xl 0 $space-lg 0;
+  margin-top: $space-3xl;
+
+  // ----------------------------------------------------------
+  // Grille des colonnes (responsive)
+  // Mobile  : empilées verticalement
+  // Tablette+ : 3 colonnes côte à côte
+  // ----------------------------------------------------------
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xl;
+
+    @include respond-to(md) {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: $space-2xl;
+    }
+  }
+
+  &__column {
+    flex: 1;
+  }
+
+  // ----------------------------------------------------------
+  // Titres des colonnes
+  // ----------------------------------------------------------
+  &__title {
+    font-size: 18px;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    margin: 0 0 $space-md 0;
+    padding-bottom: $space-sm;
+    border-bottom: 2px solid rgba($color-white, 0.2);
+  }
+
+  // ----------------------------------------------------------
+  // Adresse
+  // ----------------------------------------------------------
+  &__address {
+    font-style: normal;
+    line-height: $line-height-loose;
+  }
+
+  // ----------------------------------------------------------
+  // Téléphone
+  // ----------------------------------------------------------
+  &__phone {
+    margin-bottom: $space-sm;
+
+    a {
+      color: $color-white;
+      font-weight: $font-weight-medium;
+
+      &:hover {
+        color: $color-bg-light;
+      }
+    }
+  }
+
+  // ----------------------------------------------------------
+  // Liens
+  // ----------------------------------------------------------
+  &__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-bottom: $space-sm;
+    }
+
+    a {
+      color: $color-white;
+      text-decoration: none;
+
+      &:hover {
+        color: $color-bg-light;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // ----------------------------------------------------------
+  // Liens dans le footer (général)
+  // ----------------------------------------------------------
+  a {
+    color: $color-white;
+
+    &:hover,
+    &:focus {
+      color: $color-bg-light;
+    }
+
+    @include focus-visible;
+  }
+
+  // ----------------------------------------------------------
+  // Bottom : copyright
+  // ----------------------------------------------------------
+  &__bottom {
+    margin-top: $space-2xl;
+    padding-top: $space-lg;
+    border-top: 1px solid rgba($color-white, 0.2);
+    text-align: center;
+    font-size: $font-size-small;
+    opacity: 0.9;
+
+    p {
+      margin: 0;
+    }
+  }
+}
