@@ -3,13 +3,17 @@
 // Page d'accueil de la plateforme
 // ============================================================
 
+import Hero from '../components/Hero';
+import CommentTrouver from '../components/CommentTrouver';
+import ArtisansDuMois from '../components/ArtisansDuMois';
+
 function Accueil() {
   return (
-    <div className="container py-5">
-      <h1>Page Accueil</h1>
-      <p>Cette page affichera prochainement : Hero + barre de recherche
-        + section "Comment trouver" + 3 artisans du mois.</p>
-    </div>
+    <>
+      <Hero />
+      <CommentTrouver />
+      <ArtisansDuMois />
+    </>
   );
 }
 

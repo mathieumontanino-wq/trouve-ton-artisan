@@ -1,0 +1,87 @@
+// ============================================================
+// _hero.scss
+// Bandeau d'accueil
+// ============================================================
+
+@use '../abstracts' as *;
+
+.hero {
+  background-color: $color-bg-light;
+  padding: $space-2xl $space-md;
+  text-align: center;
+
+  @include respond-to(md) {
+    padding: $space-3xl $space-md;
+  }
+
+  @include respond-to(lg) {
+    padding: $space-4xl $space-md;
+  }
+
+  &__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    color: $color-primary-dark;
+    margin-bottom: $space-md;
+  }
+
+  &__subtitle {
+    font-size: $font-size-body;
+    color: $color-text;
+    margin-bottom: $space-xl;
+    line-height: $line-height-normal;
+
+    @include respond-to(md) {
+      font-size: 18px;
+    }
+  }
+
+  // ----------------------------------------------------------
+  // Barre de recherche : visible UNIQUEMENT sur Mobile + Tablette
+  // (sur Desktop, la recherche est dans le Header)
+  // ----------------------------------------------------------
+  &__search {
+    display: flex;
+    gap: $space-xs;
+    max-width: 480px;
+    margin: 0 auto;
+
+    @include respond-to(lg) {
+      display: none; // Masqué sur Desktop
+    }
+  }
+
+  &__search-input {
+    flex: 1;
+    padding: $space-sm $space-md;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    font-size: $font-size-body;
+    font-family: inherit;
+    background-color: $color-white;
+
+    &:focus {
+      outline: 2px solid $color-primary;
+      outline-offset: -1px;
+      border-color: $color-primary;
+    }
+  }
+
+  &__search-button {
+    padding: $space-sm $space-md;
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    font-size: $font-size-body;
+    transition: $transition-fast;
+
+    &:hover {
+      background-color: $color-primary-dark;
+    }
+  }
+}

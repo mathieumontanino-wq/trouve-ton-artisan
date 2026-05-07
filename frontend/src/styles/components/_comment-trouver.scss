@@ -1,0 +1,74 @@
+// ============================================================
+// _comment-trouver.scss
+// Section "Comment trouver mon artisan ?"
+// ============================================================
+
+@use '../abstracts' as *;
+
+.comment-trouver {
+  padding: $space-3xl 0;
+
+  &__title {
+    text-align: center;
+    margin-bottom: $space-2xl;
+  }
+
+  // ----------------------------------------------------------
+  // Liste des étapes (responsive)
+  // Mobile  : empilées verticalement (1 colonne)
+  // Tablette : grille 2x2
+  // Desktop : 4 colonnes en ligne
+  // ----------------------------------------------------------
+  &__steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-xl;
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $space-2xl;
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: $space-lg;
+    }
+  }
+
+  &__step {
+    text-align: center;
+    padding: 0 $space-md;
+  }
+
+  // ----------------------------------------------------------
+  // Numéro d'étape (cercle bleu avec chiffre blanc)
+  // ----------------------------------------------------------
+  &__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: $color-primary;
+    color: $color-white;
+    border-radius: $radius-full;
+    font-size: 20px;
+    font-weight: $font-weight-bold;
+    margin-bottom: $space-md;
+  }
+
+  &__step-title {
+    font-size: 18px;
+    color: $color-primary-dark;
+    margin-bottom: $space-sm;
+  }
+
+  &__step-description {
+    font-size: $font-size-small;
+    color: $color-text;
+    margin: 0;
+  }
+}

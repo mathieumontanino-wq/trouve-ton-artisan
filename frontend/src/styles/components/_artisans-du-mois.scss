@@ -1,0 +1,39 @@
+// ============================================================
+// _artisans-du-mois.scss
+// Section "Les artisans du mois" — grille de 3 cards
+// ============================================================
+
+@use '../abstracts' as *;
+
+.artisans-du-mois {
+  padding: $space-3xl 0;
+  background-color: $color-white;
+
+  &__title {
+    text-align: center;
+    margin-bottom: $space-2xl;
+  }
+
+  &__status {
+    text-align: center;
+    color: $color-gray-medium;
+    padding: $space-lg;
+  }
+
+  // ----------------------------------------------------------
+  // Grille des cards (responsive)
+  // Mobile  : 1 colonne (cards empilées)
+  // Tablette : 1 colonne (selon Figma) — peut passer à 2 si on veut
+  // Desktop : 3 colonnes côte à côte
+  // ----------------------------------------------------------
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $space-xl;
+    }
+  }
+}

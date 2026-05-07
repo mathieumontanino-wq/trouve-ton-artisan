@@ -1,0 +1,85 @@
+// ============================================================
+// _artisan-card.scss
+// Card affichant un artisan
+// ============================================================
+
+@use '../abstracts' as *;
+
+.artisan-card {
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: $transition-normal;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-card;
+    border-color: $color-primary;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+
+    &:hover {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    @include focus-visible;
+  }
+
+  // ----------------------------------------------------------
+  // Photo placeholder
+  // ----------------------------------------------------------
+  &__photo {
+    background-color: $color-bg-light;
+    aspect-ratio: 4 / 3;
+    @include flex-center;
+    color: $color-gray-medium;
+    font-size: $font-size-small;
+  }
+
+  // ----------------------------------------------------------
+  // Contenu textuel
+  // ----------------------------------------------------------
+  &__content {
+    padding: $space-md;
+  }
+
+  &__nom {
+    font-size: 18px;
+    color: $color-primary-dark;
+    margin-bottom: $space-sm;
+  }
+
+  &__note {
+    display: flex;
+    align-items: center;
+    gap: $space-xs;
+    color: $color-text;
+    font-weight: $font-weight-medium;
+    margin: 0 0 $space-xs 0;
+    font-size: $font-size-small;
+  }
+
+  &__star {
+    color: #F5A623;
+  }
+
+  &__specialite {
+    color: $color-text;
+    margin: 0 0 $space-xs 0;
+    font-size: $font-size-small;
+  }
+
+  &__ville {
+    color: $color-gray-medium;
+    margin: 0;
+    font-size: $font-size-small;
+  }
+}
