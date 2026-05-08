@@ -1,0 +1,81 @@
+// ============================================================
+// _not-found.scss — Page 404
+// ============================================================
+
+.not-found {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 16px;
+  background-color: #F1F8FC;
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+.not-found__card {
+  background-color: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 48px 32px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.not-found__code {
+  font-size: 5rem;
+  font-weight: 700;
+  color: #0074C7;
+  margin: 0 0 16px 0;
+  line-height: 1;
+  letter-spacing: -2px;
+
+  @media (min-width: 768px) {
+    font-size: 6rem;
+  }
+}
+
+.not-found__title {
+  color: #00497C;
+  margin: 0 0 12px 0;
+  font-size: 1.5rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+.not-found__message {
+  color: #384050;
+  margin: 0 0 32px 0;
+  line-height: 1.6;
+}
+
+.not-found__button {
+  display: inline-block;
+  background-color: #0074C7;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.1s;
+
+  &:hover {
+    background-color: #00497C;
+    color: white;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(0, 116, 199, 0.4);
+    outline-offset: 2px;
+  }
+}
