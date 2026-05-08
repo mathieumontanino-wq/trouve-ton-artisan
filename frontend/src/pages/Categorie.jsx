@@ -40,21 +40,24 @@ function Categorie() {
         </div>
       </section>
 
-      <section className="categorie-liste">
-        <div className="container">
-          {error && <p className="text-danger">{error}</p>}
-          {!loading && !error && artisans.length === 0 && (
-            <p>Aucun artisan trouvé pour cette catégorie.</p>
-          )}
-          {!loading && !error && artisans.length > 0 && (
-            <div className="categorie-grid">
-              {artisans.map((artisan) => (
-                <ArtisanCard key={artisan.id_artisan} artisan={artisan} />
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
+      <section className="categorie-liste" aria-labelledby="liste-artisans-titre">
+  <div className="container">
+    <h2 id="liste-artisans-titre" className="visually-hidden">
+      Liste des artisans dans la catégorie {nom}
+    </h2>
+    {error && <p className="text-danger">{error}</p>}
+    {!loading && !error && artisans.length === 0 && (
+      <p>Aucun artisan trouvé pour cette catégorie.</p>
+    )}
+    {!loading && !error && artisans.length > 0 && (
+      <div className="categorie-grid">
+        {artisans.map((artisan) => (
+          <ArtisanCard key={artisan.id_artisan} artisan={artisan} />
+        ))}
+      </div>
+    )}
+  </div>
+     </section>
     </div>
   );
 }

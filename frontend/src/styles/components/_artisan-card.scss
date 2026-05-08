@@ -40,7 +40,7 @@
     background-color: $color-bg-light;
     aspect-ratio: 4 / 3;
     @include flex-center;
-    color: $color-gray-medium;
+    color: $color-primary-dark;
     font-size: $font-size-small;
   }
 
@@ -78,7 +78,7 @@
   }
 
   &__ville {
-    color: $color-gray-medium;
+    color: $color-text;
     margin: 0;
     font-size: $font-size-small;
   }
