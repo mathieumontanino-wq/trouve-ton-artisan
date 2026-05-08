@@ -1,0 +1,55 @@
+// ============================================================
+// _breadcrumb.scss — Fil d'Ariane
+// ============================================================
+
+.breadcrumb-nav {
+  background-color: #F1F8FC;
+  padding: 16px 0;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+}
+
+.breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  font-size: 0.9rem;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  color: #384050;
+
+  a {
+    color: #0074C7;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover,
+    &:focus-visible {
+      color: #00497C;
+      text-decoration: underline;
+    }
+  }
+
+  &:last-child span {
+    color: #00497C;
+    font-weight: 500;
+  }
+}
+
+.breadcrumb-separator {
+  margin: 0 8px;
+  color: #384050;
+  opacity: 0.5;
+}

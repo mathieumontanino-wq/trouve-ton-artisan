@@ -1,0 +1,50 @@
+// ============================================================
+// _fiche-infos.scss — Section "À propos"
+// ============================================================
+
+.fiche-infos {
+  padding: 32px 0;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+}
+
+.fiche-infos__title {
+  color: #00497C;
+  margin-bottom: 16px;
+}
+
+.fiche-infos__texte {
+  color: #384050;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.fiche-infos__coordonnees {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fiche-infos__ligne {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: #384050;
+
+  a {
+    color: #0074C7;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover,
+    &:focus-visible {
+      color: #00497C;
+      text-decoration: underline;
+    }
+  }
+}
