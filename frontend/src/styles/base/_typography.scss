@@ -72,3 +72,26 @@ p {
   white-space: nowrap;
   border: 0;
 }
+
+// ============================================================
+// Accessibilité — focus visible global pour tous les éléments interactifs
+// Filet de sécurité au cas où un composant n'aurait pas de style focus
+// ============================================================
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #0074C7;
+  outline-offset: 2px;
+}
+
+// Désactive l'outline browser par défaut au profit du focus-visible (qui est plus moderne)
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}

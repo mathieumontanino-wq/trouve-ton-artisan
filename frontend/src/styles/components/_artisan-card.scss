@@ -9,7 +9,6 @@
   background-color: $color-white;
   border: 1px solid $color-border;
   border-radius: $radius-lg;
-  overflow: hidden;
   transition: $transition-normal;
 
   &:hover {
@@ -19,19 +18,23 @@
   }
 
   &__link {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  border-radius: $radius-lg;
+
+  &:hover {
     text-decoration: none;
     color: inherit;
-    height: 100%;
-
-    &:hover {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    @include focus-visible;
   }
+
+  &:focus-visible {
+    outline: 3px solid $color-primary;
+    outline-offset: 3px;
+  }
+}
 
   // ----------------------------------------------------------
   // Photo placeholder

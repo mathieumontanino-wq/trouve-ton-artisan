@@ -60,17 +60,24 @@
   // Logo
   // ----------------------------------------------------------
   &__logo {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: $color-primary-dark;
-    flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: $color-primary-dark;
+  flex-shrink: 0;
+  padding: $space-xs $space-sm;
+  border-radius: $radius-md;
 
-    &:hover {
-      text-decoration: none;
-      color: $color-primary;
-    }
+  &:hover {
+    text-decoration: none;
+    color: $color-primary;
   }
+
+  &:focus-visible {
+    outline: 3px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
 
   &__logo-text {
     font-size: 16px;
@@ -232,19 +239,24 @@
   }
 
   &__search-button {
-    padding: $space-sm $space-md;
-    background-color: $color-primary;
-    color: $color-white;
-    border: none;
-    border-radius: $radius-md;
-    cursor: pointer;
-    font-size: $font-size-body;
-    transition: $transition-fast;
+  padding: $space-sm $space-md;
+  background-color: $color-primary;
+  color: $color-white;
+  border: none;
+  border-radius: $radius-md;
+  cursor: pointer;
+  font-size: $font-size-body;
+  transition: $transition-fast;
 
-    &:hover {
-      background-color: $color-primary-dark;
-    }
+  &:hover {
+    background-color: $color-primary-dark;
   }
+
+  &:focus-visible {
+    outline: 3px solid $color-primary-dark;
+    outline-offset: 2px;
+  }
+}
 }
 
 // ----------------------------------------------------------
