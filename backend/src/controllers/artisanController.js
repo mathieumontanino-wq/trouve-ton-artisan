@@ -13,52 +13,44 @@ const { Artisan, Specialite, Categorie } = require('../models');
 //   ?top=true                    (uniquement les artisans du mois)
 //   ?nom=labbé                   (recherche par nom partiel)
 // ------------------------------------------------------------
-const getAllArtisans = async (req, res) => {
+const getAllArtisans = async (req, res, next) => {
   try {
-    const { categorie, top, nom } = req.query;
+    const { top, categorie, nom } = req.query;
+    
+    const where = {};
+    if (top === 'true') where.top = true;
+    if (nom) where.nom = { [Op.like]: `%${nom}%` };
 
-    // Construction dynamique des conditions
-    const whereArtisan = {};
     const whereCategorie = {};
-
-    if (top === 'true') {
-      whereArtisan.top = true;
-    }
-
-    if (nom) {
-      whereArtisan.nom = { [Op.like]: `%${nom}%` };
-    }
-
-    if (categorie) {
-      whereCategorie.nom = categorie;
-    }
+    if (categorie) whereCategorie.nom = categorie;
 
     const artisans = await Artisan.findAll({
-      where: whereArtisan,
-      include: [{
-        model: Specialite,
-        as: 'specialite',
-        include: [{
-          model: Categorie,
-          as: 'categorie',
-          where: Object.keys(whereCategorie).length ? whereCategorie : undefined,
-          required: !!categorie  // INNER JOIN si filtre par catégorie, sinon LEFT JOIN
-        }]
-      }],
-      order: [['nom', 'ASC']]
+      where,
+      include: [
+        {
+          model: Specialite,
+          as: 'specialite',
+          required: !!categorie,
+          include: [
+            {
+              model: Categorie,
+              as: 'categorie',
+              where: Object.keys(whereCategorie).length ? whereCategorie : undefined,
+              required: !!categorie,
+            },
+          ],
+        },
+      ],
+      order: [['nom', 'ASC']],
     });
 
-    res.status(200).json({
-      status: 'OK',
+    return res.status(200).json({
+      status: 'success',
       count: artisans.length,
-      data: artisans
+      data: artisans,
     });
   } catch (error) {
-    console.error('Erreur getAllArtisans :', error.message);
-    res.status(500).json({
-      status: 'ERROR',
-      message: 'Erreur lors de la récupération des artisans'
-    });
+    next(error);
   }
 };
 

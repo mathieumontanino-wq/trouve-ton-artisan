@@ -1,0 +1,54 @@
+// ============================================================
+// _categorie.scss — Page Catégorie
+// ============================================================
+
+.categorie-page {
+  min-height: 70vh;
+}
+
+.categorie-hero {
+  background-color: #F1F8FC;
+  padding: 64px 0;
+  text-align: center;
+
+  h1 {
+    color: #00497C;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #384050;
+    margin: 0;
+  }
+}
+
+.categorie-liste {
+  padding: 64px 0;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+}
+
+.categorie-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  // Tablette : 2 colonnes
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  // Desktop : 3 colonnes
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.text-danger {
+  color: #CD2C2E;
+  text-align: center;
+}

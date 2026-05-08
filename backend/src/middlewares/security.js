@@ -34,12 +34,25 @@ const helmetMiddleware = helmet({
 // 2. CORS — Contrôle des origines autorisées
 // ------------------------------------------------------------
 // L'API ne doit être accessible QUE depuis le frontend React (CORS_ORIGIN)
+// CORS_ORIGIN peut contenir plusieurs URLs séparées par des virgules
+// (utile en dev car Vite peut basculer entre 5173 et 5174)
 // Toute requête venant d'un autre domaine sera rejetée
 // Protège contre : utilisation non autorisée de l'API
 // ------------------------------------------------------------
+const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:5173')
+  .split(',')
+  .map(origin => origin.trim());
+
 const corsMiddleware = cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
-  methods: ['GET', 'POST'],  // on autorise uniquement GET et POST
+  origin: function (origin, callback) {
+    // Autorise les requêtes sans origine (Postman, curl, healthchecks)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Origine non autorisée par CORS : ' + origin));
+  },
+  methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
   maxAge: 86400  // cache la réponse preflight 24h
