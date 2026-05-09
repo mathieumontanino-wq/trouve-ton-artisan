@@ -1,0 +1,8 @@
+# robots.txt - Trouve ton artisan
+# https://www.robotstxt.org/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.trouve-ton-artisan.fr/sitemap.xml
