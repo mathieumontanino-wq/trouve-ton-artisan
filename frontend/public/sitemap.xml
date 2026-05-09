@@ -3,51 +3,60 @@
 
   <!-- Page d'accueil -->
   <url>
-    <loc>https://www.trouve-ton-artisan.fr/</loc>
+    <loc>https://trouve-ton-artisan-mm.netlify.app/</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Pages Catégories -->
   <url>
-    <loc>https://www.trouve-ton-artisan.fr/categorie/Alimentation</loc>
+    <loc>https://trouve-ton-artisan-mm.netlify.app/categorie/Alimentation</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.trouve-ton-artisan.fr/categorie/Bâtiment</loc>
+    <loc>https://trouve-ton-artisan-mm.netlify.app/categorie/B%C3%A2timent</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.trouve-ton-artisan.fr/categorie/Fabrication</loc>
+    <loc>https://trouve-ton-artisan-mm.netlify.app/categorie/Fabrication</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.trouve-ton-artisan.fr/categorie/Services</loc>
+    <loc>https://trouve-ton-artisan-mm.netlify.app/categorie/Services</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Pages institutionnelles -->
   <url>
-    <loc>https://www.trouve-ton-artisan.fr/mentions-legales</loc>
+    <loc>https://trouve-ton-artisan-mm.netlify.app/mentions-legales</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.trouve-ton-artisan.fr/donnees-personnelles</loc>
+    <loc>https://trouve-ton-artisan-mm.netlify.app/donnees-personnelles</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.trouve-ton-artisan.fr/accessibilite</loc>
+    <loc>https://trouve-ton-artisan-mm.netlify.app/accessibilite</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.trouve-ton-artisan.fr/cookies</loc>
+    <loc>https://trouve-ton-artisan-mm.netlify.app/cookies</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>

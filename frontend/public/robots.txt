@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://www.trouve-ton-artisan.fr/sitemap.xml
+Sitemap: https://trouve-ton-artisan-mm.netlify.app/sitemap.xml
