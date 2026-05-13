@@ -11,18 +11,36 @@ const { Artisan, Specialite, Categorie } = require('../models');
 // Récupère tous les artisans avec filtres optionnels :
 //   ?categorie=Alimentation      (filtre par nom de catégorie)
 //   ?top=true                    (uniquement les artisans du mois)
-//   ?nom=labbé                   (recherche par nom partiel)
+//   ?nom=labbé                   (recherche par nom partiel — legacy)
+//   ?recherche=chocolat          (recherche dans nom artisan + spécialité)
 // ------------------------------------------------------------
 const getAllArtisans = async (req, res, next) => {
   try {
-    const { top, categorie, nom } = req.query;
-    
+    const { top, categorie, nom, recherche } = req.query;
+
+    // Construction du WHERE sur la table artisan
     const where = {};
     if (top === 'true') where.top = true;
     if (nom) where.nom = { [Op.like]: `%${nom}%` };
 
+    // Construction du WHERE sur la table catégorie
     const whereCategorie = {};
     if (categorie) whereCategorie.nom = categorie;
+
+    // Construction du WHERE sur la table spécialité (pour la recherche)
+    const whereSpecialite = {};
+
+    // Si on a une recherche, on cherche soit dans le nom de l'artisan,
+    // soit dans le nom de la spécialité
+    if (recherche) {
+      const motCle = `%${recherche}%`;
+
+      // On combine avec OR : (artisan.nom LIKE %x%) OR (specialite.nom LIKE %x%)
+      where[Op.or] = [
+        { nom: { [Op.like]: motCle } },
+        { '$specialite.nom$': { [Op.like]: motCle } },
+      ];
+    }
 
     const artisans = await Artisan.findAll({
       where,
@@ -30,7 +48,8 @@ const getAllArtisans = async (req, res, next) => {
         {
           model: Specialite,
           as: 'specialite',
-          required: !!categorie,
+          required: !!categorie || !!recherche,
+          where: Object.keys(whereSpecialite).length ? whereSpecialite : undefined,
           include: [
             {
               model: Categorie,
