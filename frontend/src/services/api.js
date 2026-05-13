@@ -14,7 +14,7 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3001/api',
-  timeout: 10000, // 10 secondes max
+  timeout: 60000, // 60 secondes (gère le cold start Render Free)
   headers: {
     'Content-Type': 'application/json',
   },
@@ -61,6 +61,9 @@ export const getArtisansByCategorie = (categorieNom) =>
 
 export const searchArtisansByName = (nom) =>
   api.get('/artisans', { params: { nom } });
+
+export const searchArtisans = (recherche) =>
+  api.get('/artisans', { params: { recherche } });
 
 export const getArtisanById = (id) => api.get(`/artisans/${id}`);
 
